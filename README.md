@@ -1,0 +1,3 @@
+Dalam aspek clean code saya rasa saya sudah cukup memenuhinya. Penamaan variabel dan fungsi yang saya tetapkan tidak membingungkan dan jelas. Setiap fungsi yang saya buat, melakukan 1 tugas spesifik seperti halnya fungsi findProduct yang mencari produk berdasarkan idnya
+Saya juga Memisahkan logika data di Repository, logika bisnis di Service, dan logika tampilan di Controller sesuai arsitektur Spring Boot.
+Selain itu, saya juga menggunakan UUID sebagai ganti ID numerik berurutan mencegah pengguna menebak ID produk lain. Validasi juga dilakukan untuk mencegah pengguna memasukan hal yang tidak sesuai misalnya quantity 0 atau negatif.
