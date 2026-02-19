@@ -70,9 +70,9 @@ class ProductControllerTest {
 
         mockMvc.perform(get("/product/list"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("productList"))
-                .andExpect(model().attributeExists("products"))
-                .andExpect(model().attribute("products", allProducts));
+                .andExpect(view().name("ProductList"))
+                .andExpect(model().attributeExists("product"))
+                .andExpect(model().attribute("product", allProducts));
     }
 
     @Test
