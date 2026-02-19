@@ -13,13 +13,15 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
+    private String strProduct = "product";
+
     @Autowired
     private ProductService service;
 
     @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();
-        model.addAttribute("product", product);
+        model.addAttribute(strProduct, product);
         return "CreateProduct";
     }
 
@@ -27,7 +29,7 @@ public class ProductController {
     public String createProductPost(@ModelAttribute Product product, Model model) {
         if (product.getProductQuantity() < 1) {
             model.addAttribute("error", "Quantity cannot be zero or negative!");
-            model.addAttribute("product", product);
+            model.addAttribute(strProduct, product);
             return "CreateProduct";
         }
         service.create(product);
@@ -37,14 +39,14 @@ public class ProductController {
     @GetMapping("/list")
     public String productListPage(Model model) {
         List<Product> allProducts = service.findAll();
-        model.addAttribute("products", allProducts);
+        model.addAttribute(strProduct, allProducts);
         return "ProductList";
     }
 
     @GetMapping("/edit/{productId}")
     public String editProductPage(@PathVariable String productId, Model model) {
         Product product = service.findProduct(productId);
-        model.addAttribute("product", product);
+        model.addAttribute(strProduct, product);
         return "EditProduct";
     }
 
@@ -52,7 +54,7 @@ public class ProductController {
     public String editProductPost(@ModelAttribute Product product, Model model) {
         if (product.getProductQuantity() < 1) {
             model.addAttribute("error", "Quantity cannot be zero or negative!");
-            model.addAttribute("product", product);
+            model.addAttribute(strProduct, product);
             return "EditProduct";
         }
         service.edit(product);
