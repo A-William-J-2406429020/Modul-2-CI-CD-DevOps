@@ -65,12 +65,13 @@ class ProductControllerTest {
 
     @Test
     void testProductListPage() throws Exception {
-        List<Product> allProducts = Arrays.asList(product);
+        List<Product> allProducts = List.of(product);
         when(service.findAll()).thenReturn(allProducts);
 
         mockMvc.perform(get("/product/list"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("ProductList"))
+                .andExpect(view().name("productList"))
+                .andExpect(model().attributeExists("products"))
                 .andExpect(model().attribute("products", allProducts));
     }
 
